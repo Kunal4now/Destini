@@ -68,7 +68,11 @@ class _StoryPageState extends State<StoryPage> {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      brain.nextStory(1);
+                    });
+                  },
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.green,
                   ),
@@ -78,17 +82,24 @@ class _StoryPageState extends State<StoryPage> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: TextButton(
-                  child: Text(
-                    brain.getChoice2(),
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white,
+                child: Visibility(
+                  visible: brain.buttonShouldBeVisible(),
+                  child: TextButton(
+                    child: Text(
+                      brain.getChoice2(),
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    onPressed: () {
+                      setState(() {
+                        brain.nextStory(2);
+                      });
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
                   ),
                 ),
               ),
